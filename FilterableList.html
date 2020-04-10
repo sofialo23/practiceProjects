@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Contacts</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.css">
+</head>
+
+<body>
+	<div class="container">
+		<h1 class="center-align"> My Contacts </h1>
+		<input type="text" id="filterInput" placeholder="search for a name...">
+		<ul id="names" class="collection with-header">
+			<li class="collection-header">A
+			</li>
+			<li class="collection-item">
+				<a href="#">Ana</a>
+			</li>
+			<li class="collection-item">
+				<a href="#">Amanda</a>
+			</li>
+			<li class="collection-item">
+				<a href="#">Alicia</a>
+			</li>
+
+			<li class="collection-header">B
+			</li>
+			<li class="collection-item">
+				<a href="#">Benny</a>
+			</li>
+			<li class="collection-item">
+				<a href="#">Beatriz</a>
+			</li>
+			<li class="collection-item">
+				<a href="#">Benja</a>
+			</li>
+				
+			<li class="collection-header">C
+			</li>
+			<li class="collection-item">
+				<a href="#">Carlos</a>
+			</li>
+			<li class="collection-item">
+				<a href="#">Camila</a>
+			</li>
+			<li class="collection-item">
+				<a href="#">Cecilia</a>
+			</li>
+		</ul>
+	</div>
+
+	<script>
+		//get INPUT element
+		let filterInput = document.getElementById('filterInput');
+
+
+		//add event listener
+		filterInput.addEventListener('keyup', filterNames);
+
+		function filterNames(){
+			let filterName = document.getElementById('filterInput').value.toUpperCase();
+
+			let ul = document.getElementById('names');
+			let il = ul.querySelectorAll('li.collection-item');
+
+			for(let i=0; i<il.length; i++){
+				let a = il[i].getElementsByTagName('a')[0];
+
+				//There is a match
+				if(a.innerHTML.toUpperCase().indexOf(filterName) >-1){
+					il[i].style.display = '';
+				}
+				//No match, hide it
+				else{
+					il[i].style.display = 'none';
+				}
+			}
+		}
+
+	</script>
+</body>
+</html>
